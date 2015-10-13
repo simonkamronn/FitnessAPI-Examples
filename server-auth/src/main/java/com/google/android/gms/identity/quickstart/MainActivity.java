@@ -59,7 +59,7 @@ public class MainActivity extends FragmentActivity implements
 
     // Client ID for a web server that will receive the auth code and exchange it for a
     // refresh token if offline access is requested.
-    private static final String WEB_CLIENT_ID = "894633196263-b3vortocf30h3r3a538ngirpub2r80so.apps.googleusercontent.com";
+    private static final String WEB_CLIENT_ID = "";
 
     // Bundle keys for instance state
     private static final String KEY_IS_RESOLVING = "is_resolving";
