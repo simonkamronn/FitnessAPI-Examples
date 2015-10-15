@@ -109,5 +109,11 @@
         android:layout_height="wrap_content"
         android:text="Sensor batching?"
         android:id="@+id/sensor_batching_textview" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/subscription_list_string"
+        android:id="@+id/subscription_list_textview" />
 </LinearLayout>
 <!-- From: file:/C:/Users/Simon/SkyDrive/phd/dev/android/FitnessViewer/server-auth/src/main/res/layout/main_activity.xml -->

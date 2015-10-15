@@ -327,6 +327,7 @@
     <string name="store_picture_title">Save image</string>
     <!-- From: file:/C:/Users/Simon/SkyDrive/phd/dev/android/FitnessViewer/server-auth/src/main/res/values/strings.xml -->
     <eat-comment/>
+    <string name="subscription_list_string">No subscriptions</string>
     <string name="unknown_person">Unknown</string>
     <!-- From: file:/C:/Users/Simon/SkyDrive/phd/dev/android/FitnessViewer/server-auth/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/7.5.0/res/values/wallet_strings.xml -->
     <eat-comment/>

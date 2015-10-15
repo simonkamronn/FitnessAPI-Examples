@@ -42,6 +42,8 @@ import com.google.android.gms.common.api.Status;
 import com.google.android.gms.fitness.Fitness;
 import com.google.android.gms.fitness.FitnessStatusCodes;
 import com.google.android.gms.fitness.data.DataType;
+import com.google.android.gms.fitness.data.Subscription;
+import com.google.android.gms.fitness.result.ListSubscriptionsResult;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
 
@@ -59,7 +61,7 @@ public class MainActivity extends FragmentActivity implements
 
     // Client ID for a web server that will receive the auth code and exchange it for a
     // refresh token if offline access is requested.
-    private static final String WEB_CLIENT_ID = "894633196263-b3vortocf30h3r3a538ngirpub2r80so.apps.googleusercontent.com";
+    private static final String WEB_CLIENT_ID = "";
 
     // Bundle keys for instance state
     private static final String KEY_IS_RESOLVING = "is_resolving";
@@ -85,6 +87,7 @@ public class MainActivity extends FragmentActivity implements
 
     private TextView mStatus;
     private TextView mSensorStatus;
+    private TextView mSubscriptionList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -93,6 +96,7 @@ public class MainActivity extends FragmentActivity implements
 
         mStatus = (TextView) findViewById(R.id.sign_in_status);
         mSensorStatus = (TextView) findViewById(R.id.sensor_batching_textview);
+        mSubscriptionList = (TextView) findViewById(R.id.subscription_list_textview);
 
         // Button listeners
         findViewById(R.id.sign_in_button).setOnClickListener(this);
@@ -140,6 +144,8 @@ public class MainActivity extends FragmentActivity implements
     @Override
     protected void onResume() {
         super.onResume();
+
+        // Get sensor FIFO size
         SensorManager mgr = (SensorManager) getSystemService(SENSOR_SERVICE);
         Sensor accelerometer = mgr.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         int maxEventCount = accelerometer.getFifoMaxEventCount();
@@ -150,6 +156,22 @@ public class MainActivity extends FragmentActivity implements
         else {
             mSensorStatus.setText(String.format("Sensor batching NOT supported!\nfifo size: %d\nmax event count: %d", fifoSize, maxEventCount));
         }
+
+        // List active subscriptions to Fitness API
+        Fitness.RecordingApi.listSubscriptions(mGoogleApiClient)
+                // Create the callback to retrieve the list of subscriptions asynchronously.
+                .setResultCallback(new ResultCallback<ListSubscriptionsResult>() {
+                    @Override
+                    public void onResult(ListSubscriptionsResult listSubscriptionsResult) {
+                        String subscription_list = "Subscriptionlist: \n";
+                        for (Subscription sc : listSubscriptionsResult.getSubscriptions()) {
+                            String dt = sc.getDataType().getName();
+                            subscription_list += dt + "\n";
+                            Log.i(TAG, "Active subscription for data type: " + dt);
+                        }
+                        mSubscriptionList.setText(subscription_list);
+                    }
+                });
     }
 
     @Override
