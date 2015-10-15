@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">VanillaFitnessApp</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="subscription_list">No subscriptions</string>
+</resources>

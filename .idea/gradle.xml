@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/server-auth" />
+            <option value="$PROJECT_DIR$/vanillafitnessapp" />
           </set>
         </option>
       </GradleProjectSettings>

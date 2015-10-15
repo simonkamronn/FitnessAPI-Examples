@@ -1,1 +1,1 @@
-include ':app', ':server-auth'
+include ':app', ':server-auth', ':vanillafitnessapp'
