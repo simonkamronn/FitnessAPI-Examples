@@ -46,7 +46,7 @@ public class MainActivity extends Activity {
             String action = intent.getAction();
             switch(action){
                 case GoogleApiSubscription.SUBSCRIPTION_LIST_RECEIVED:
-                    String subscription_string = "";
+                    String subscription_string = "Subscription list:\n";
                     for (String s: mGoogleApiSubscription.subscriptions){
                         subscription_string += s + "\n";
                     }
